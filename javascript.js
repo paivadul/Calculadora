@@ -1,4 +1,5 @@
-/*let boton = document.getElementById('Calcular'); //el botón
+/*
+let boton = document.getElementById('Calcular'); //el botón
 let dato = document.getElementById('peso'); //el imput
 let flujo = document.getElementById('flujo'); //línea 17 en HTML. 1er resultado. Holliday
 let mantenimiento = document.getElementById('mantenimiento') //línea 18. 2do resultado en cc/h. Holliday
@@ -102,7 +103,7 @@ function superficie(peso) {
 
 
 
-/* CON CHAT GPT
+/* INTENTO NOSÉCUANTO
     const CALCULAR = document.getElementById('Calcular');
     const FLUJO = document.getElementById('flujo');
     const MANTENIMIENTO = document.getElementById('mantenimiento');
