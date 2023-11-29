@@ -1,4 +1,75 @@
-/*
+const PESO = document.getElementById('peso'); // input
+const CALCULAR = document.getElementById('Calcular'); // boton
+const FLUJO = document.getElementById('flujo'); //resultado 1
+const MANTENIMIENTO = document.getElementById('mantenimiento'); //resultado 2
+const MANTENIMIENTOM2 = document.getElementById('mantenimientoM2'); //resultado 3
+const ERROR = document.getElementById('error');
+
+//add event listener es para que esté atento a detectar datos//
+CALCULAR.addEventListener('click', () => {
+    const PESO = document.getElementById('peso').value
+        if (PESO <= 0) {
+            ERROR.style.display = 'block';
+            FLUJO.style.display = 'none';
+            MANTENIMIENTO.style.display = "none";
+            MANTENIMIENTOM2.style.display = "none";
+          } 
+             else if (PESO <= 30) {
+         let flujo = Holliday(PESO);
+
+            ERROR.style.display = 'none';
+
+            FLUJO.innerHTML = flujo + 'cc'
+            FLUJO.style.display = "block";
+            
+            MANTENIMIENTO.innerHTML = 'm ' + Math.round(flujo / 24) + 'cc/h'
+            MANTENIMIENTO.style.display = "block";
+
+            MANTENIMIENTOM2.innerHTML = 'm+m/2 ' + Math.round((flujo / 24) * 1.5)  + 'cc/h'
+            MANTENIMIENTOM2.style.display = "block";
+
+            console.log(Holliday(PESO), ' cc');
+            console.log(Math.round(Holliday(PESO) / 24), ' cc/h');
+            console.log("m+m/2 = ", Math.round((Holliday(PESO) / 24) * 1.5), ' cc/h');
+          } 
+             else if ( PESO > 30) {
+         let result = superficie(PESO);
+            ERROR.style.display = 'none';
+
+            FLUJO.innerHTML = 'SC1 ' + Math.round(result * 1500) + ' cc';
+            FLUJO.style.display = "block";
+            
+            MANTENIMIENTO.innerHTML = 'SC2 ' + Math.round(result * 2000) + ' cc';
+            MANTENIMIENTO.style.display = "block";
+
+            MANTENIMIENTOM2.style.display = 'none';
+
+            console.log("Sc 1 = ", Math.round(result * 1500), ' cc/h');
+            console.log("Sc 2 = ", Math.round(result * 2000), ' cc/h');
+          }
+        })
+
+
+function Holliday(peso) {
+    let resultado;
+    if (peso > 20) {
+        resultado = ((peso - 20) * 20) + 1500
+    } else if (peso < 20 && peso > 10) {
+        resultado = ((peso - 10) * 50) + 1000
+    } else {
+        resultado = peso * 100
+    }
+    return resultado
+}
+
+function superficie(peso) {
+    let resultado = (((peso *4) + 7) / (peso + 90))
+    return resultado
+    }
+
+
+/*NOTAS E INTENTOS. 
+
 let boton = document.getElementById('Calcular'); //el botón
 let dato = document.getElementById('peso'); //el imput
 let flujo = document.getElementById('flujo'); //línea 17 en HTML. 1er resultado. Holliday
@@ -34,76 +105,10 @@ function Holliday(peso) {
 function superficie(peso) {
   let resultado = (((peso *4) + 7) / (peso + 90))
   return resultado
-  }*/7
-
-const PESO = document.getElementById('peso');
-const CALCULAR = document.getElementById('Calcular');
-const FLUJO = document.getElementById('flujo'); //resultado 1
-const MANTENIMIENTO = document.getElementById('mantenimiento'); //resultado 2
-const MANTENIMIENTOM2 = document.getElementById('mantenimientoM2'); //resultado 3
-const ERROR = document.getElementById('error');
-
-//add event listener es para que esté atento a detectar datos//
-CALCULAR.addEventListener('click', () => {
-    const PESO = document.getElementById('peso').value
-        if (PESO > 0) {
-            ERROR.innerHTML = ERROR;
-            ERROR.style.display = "none";
-
-        if (PESO <= 30) {
-         let flujo = Holliday(PESO);
-            FLUJO.innerHTML = flujo;
-            FLUJO.style.display = "block";
-            
-            MANTENIMIENTO.innerHTML = flujo / 24;
-            MANTENIMIENTO.style.display = "block";
-
-            MANTENIMIENTOM2.innerHTML = (flujo / 24) * 1.5;
-            MANTENIMIENTOM2.style.display = "block";
-
-            console.log(Holliday(PESO));
-            console.log( Holliday(PESO) / 24, " cc/h");
-            console.log("m+m/2 = ", (Holliday(PESO) / 24) * 1.5, " cc/h");
-          } else {
-         let superficie = superficie(PESO);
-
-            FLUJO.innerHTML = superficie * 1500, ' cc';
-            FLUJO.style.display = "block";
-            
-            MANTENIMIENTO.innerHTML = superficie * 2000, ' cc';
-            MANTENIMIENTO.style.display = "block";
-
-            console.log("Sc 1 = ", superficie(peso) * 1500, " cc/h");
-            console.log("Sc 2 = ", superficie(peso) * 2000,  " cc/h");
-          }
-        }
-});
+  }*/
 
 
-function Holliday(peso) {
-    let resultado;
-    if (peso > 20) {
-        resultado = ((peso - 20) * 20) + 1500
-    } else if (peso < 20 && peso > 10) {
-        resultado = ((peso - 10) * 50) + 1000
-    } else {
-        resultado = peso * 100
-    }
-    return resultado
-}
-
-function superficie(peso) {
-    let resultado = (((peso *4) + 7) / (peso + 90))
-    return resultado
-    }
-
-
-
-
-
-
-
-/* INTENTO NOSÉCUANTO
+/* CON CHAT GPT
     const CALCULAR = document.getElementById('Calcular');
     const FLUJO = document.getElementById('flujo');
     const MANTENIMIENTO = document.getElementById('mantenimiento');

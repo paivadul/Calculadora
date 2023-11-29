@@ -24,7 +24,7 @@ body{
     float: left;
 }
 #Explicación{
-    background: #FF416C;
+    background: #fe4470;
     width: 50%;
     height: 100%;
     float: left;
@@ -33,6 +33,7 @@ body{
 #texto{
     font-size: bold;
 }
+
 .Contenido{
     position: relative;
     top: 50%;
@@ -66,6 +67,7 @@ button:active{
     color: rgb(255, 0, 0);
     font-weight: bold;
     display: none;
+    margin-bottom: 5px;
     font-size: 12px;
 }
 .resultado{
